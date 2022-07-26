@@ -1,0 +1,6 @@
+C:\Users\Joe\Documents\Visual Studio 2017\Projects\WebDeveloperInterviewHomework\NodejsWebApp1\obj\Debug\HomeworkProject.njsproj.AssemblyReference.cache
+C:\Users\Joe\Documents\Visual Studio 2017\Projects\WebDeveloperInterviewHomework\NodejsWebApp1\obj\Debug\HomeworkProject.njsproj.CoreCompileInputs.cache
+C:\Users\Joe\Documents\Visual Studio 2017\Projects\WebDeveloperInterviewHomework\NodejsWebApp1\bin\Microsoft.NodejsTools.WebRole.dll
+C:\Users\Joe\Documents\Visual Studio 2017\Projects\WebDeveloperInterviewHomework\HomeworkProject\obj\Debug\HomeworkProject.njsproj.AssemblyReference.cache
+C:\Users\Joe\Documents\Visual Studio 2017\Projects\WebDeveloperInterviewHomework\HomeworkProject\obj\Debug\HomeworkProject.njsproj.CoreCompileInputs.cache
+C:\Users\Joe\Documents\Visual Studio 2017\Projects\WebDeveloperInterviewHomework\HomeworkProject\bin\Microsoft.NodejsTools.WebRole.dll

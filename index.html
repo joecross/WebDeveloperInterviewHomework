@@ -1,0 +1,50 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+</head>
+<body>
+    <h1 class="dc-title">Working with JSON in JavaScript</h1>
+    <ul class="dc-title"></ul>
+
+    <div id="demo"></div>
+    <table id="table1">
+
+    </table>
+
+    <div id="div2"></div>
+
+    <script>
+
+        fetch("Homework.JSON")
+            .then(response => response.json())
+            .then(data => {
+                for (let i = 0; i < (data.length - 1); i++) {
+                    //console.log(data[i].summary)
+                    //document.getElementById("demo").innerHTML = data[i].summary
+                    
+                    document.write(data[i].summary)
+                }
+
+                //Retrieved from https://stackoverflow.com/questions/18395976/how-to-display-a-json-array-in-table-format
+                //Appears to use JQuery.
+                //var tbl = document.getElementById("<table/>").attr("date", "table1");
+                //    $("#div2").append(tbl);
+                //    for (var i = 0; i < data.length; i++) {
+                //        var tr = "<tr>";
+                //        var td1 = "<td>" + obj[i]["temperatureC"] + "</td>";
+                //        var td2 = "<td>" + obj[i]["temperatureF"] + "</td>";
+                //        var td3 = "<td>" + obj[i]["Summary"] + "</td></tr>";
+
+                //        document.getElementById("#table1").append(tr + td1 + td2 + td3); 
+                //    }
+            })
+
+    </script>
+
+    
+
+</body>
+</html>
