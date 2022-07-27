@@ -18,10 +18,10 @@
     </style>
 </head>
 <body>
-    <h1 class="dc-title">Forecast for Living at WSU</h1>
+    <h1 class="dc-title">Forecast for WSU</h1>
     <ul class="dc-title"></ul>
 
-    <table class="table table-striped" >
+    <table id="table2" class="table table-striped" table-layout:fixed style="" >
         <tr class="bg-info">
             <th>Total Number of Forecasts</th>
             <th>Average Temp (F)</th>
@@ -46,63 +46,7 @@
         </tbody>
     </table>
 
-    <div id="div2"></div>
-
-    <script>
-
-        fetch("Homework.JSON")
-            .then(response => response.json())
-            .then(data => {
-                var myArray = data
-
-                buildTable(myArray)
-
-                function buildTable(tableData) {
-                    var table = document.getElementById('table1Body')
-                    var averageTemp = 0
-                    var summaryArray = []
-
-                    //loop through array, making rows one by one
-                    for (let i = 0; i < tableData.length; i++) {
-
-                        //Make date clear to read
-                        var reportedDate = tableData[i].date
-                        var dateParse = reportedDate.substring(0, 10)
-                        let dateOutput = new Date(dateParse).toLocaleDateString()
-
-                        //Add all temps within loop. Divide by total number outside of loop to get average.
-                        //var averageTemp = averageTemp + tableData[i].temperatureF
-                        averageTemp = averageTemp + tableData[i].temperatureF
-
-                        //Count Summaries to determine most common
-
-                        //concatonate rows for the table
-                        var row = ` <tr>
-                                       <td>${dateOutput}</td>
-                                        <td>${tableData[i].temperatureF}</td> 
-                                        <td>${tableData[i].summary}</td> 
-                                    </tr>`
-                        //append data to table
-                        table.innerHTML += row
-                    }
-
-                    averageTemp = averageTemp / tableData.length
-                    console.log(averageTemp)
-                    table = document.getElementById('summaryTable')
-                    row = ` <tr>
-                                <td>${tableData.length}</td>
-                                <td>${averageTemp}</td>
-                            </tr>`
-                    table.innerHTML += row
-                }
-
-            })
-
-                  
-
-    </script>
-
-    
+    <script src="ParseJSON.js"></script>
 
 </body>
 </html>
