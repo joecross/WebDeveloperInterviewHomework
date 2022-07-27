@@ -25,7 +25,6 @@
     <table class="table table-striped" id="table1">
         <tr class="bg-info">
             <th>Date</th>
-            <!--<th>Time</th>-->
             <th>Temperature C</th>
             <th>Temperature F</th>
             <th>Summary</th>
@@ -55,19 +54,26 @@
                 function buildTable(tableData) {
                     var table = document.getElementById('table1Body')
 
+                    //loop through array, making rows one by one
                     for (let i = 0; i < tableData.length; i++) {
 
-                        ////Make date and time reader friendly
-                        //var reportedDate = tabledata.date[i]
-                        //var dateParse = reportedDate.substring(1, 10)
+                        //Make date and time reader friendly
+                        var reportedDate = tableData[i].date
+                        var dateParse = reportedDate.substring(0, 10)
+                        let dateOutput = new Date(dateParse).toLocaleDateString()
 
+                        //var outputDate = dateResult.getMonth() + "-" + day(dateResult) + "-" + year(dateResult)
+                        console.log(dateOutput)
+                        //console.log(i)
 
+                        //concatonate rows for the table
                         var row = ` <tr>
-                                       <td>${tableData[i].date}</td> 
+                                       <td>${dateOutput}</td>
                                         <td>${tableData[i].temperatureC}</td> 
                                         <td>${tableData[i].temperatureF}</td> 
                                         <td>${tableData[i].summary}</td> 
                                     </tr>`
+                        //append data to table
                         table.innerHTML += row
                     }
                 }
