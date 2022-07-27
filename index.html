@@ -10,7 +10,7 @@
 <html lang="en" xmlns="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="utf-8" />
-    <title></title>
+    <title>Living at WSU Forecast</title>
     <style>
         th{
             color:#fff;
@@ -18,15 +18,26 @@
     </style>
 </head>
 <body>
-    <h1 class="dc-title">Working with JSON in JavaScript</h1>
+    <h1 class="dc-title">Forecast for Living at WSU</h1>
     <ul class="dc-title"></ul>
 
-    <div id="demo"></div>
+    <table class="table table-striped" >
+        <tr class="bg-info">
+            <th>Total Number of Forecasts</th>
+            <th>Average Temp (F)</th>
+        </tr>
+
+        <tbody id="summaryTable">
+
+        </tbody>
+    </table>
+
+    <div></div>
+
     <table class="table table-striped" id="table1">
         <tr class="bg-info">
             <th>Date</th>
-            <th>Temperature C</th>
-            <th>Temperature F</th>
+            <th>Temperature (F)</th>
             <th>Summary</th>
         </tr>
 
@@ -43,59 +54,51 @@
             .then(response => response.json())
             .then(data => {
                 var myArray = data
-                //for (let i = 0; i < (data.length - 1); i++) {
-                //    //console.log(data[i].summary)
-                //    //document.getElementById("demo").innerHTML = data[i].summary
-
-                //    document.write(myArray[i].summary)
 
                 buildTable(myArray)
 
                 function buildTable(tableData) {
                     var table = document.getElementById('table1Body')
+                    var averageTemp = 0
+                    var summaryArray = []
 
                     //loop through array, making rows one by one
                     for (let i = 0; i < tableData.length; i++) {
 
-                        //Make date and time reader friendly
+                        //Make date clear to read
                         var reportedDate = tableData[i].date
                         var dateParse = reportedDate.substring(0, 10)
                         let dateOutput = new Date(dateParse).toLocaleDateString()
 
-                        //var outputDate = dateResult.getMonth() + "-" + day(dateResult) + "-" + year(dateResult)
-                        console.log(dateOutput)
-                        //console.log(i)
+                        //Add all temps within loop. Divide by total number outside of loop to get average.
+                        //var averageTemp = averageTemp + tableData[i].temperatureF
+                        averageTemp = averageTemp + tableData[i].temperatureF
+
+                        //Count Summaries to determine most common
 
                         //concatonate rows for the table
                         var row = ` <tr>
                                        <td>${dateOutput}</td>
-                                        <td>${tableData[i].temperatureC}</td> 
                                         <td>${tableData[i].temperatureF}</td> 
                                         <td>${tableData[i].summary}</td> 
                                     </tr>`
                         //append data to table
                         table.innerHTML += row
                     }
+
+                    averageTemp = averageTemp / tableData.length
+                    console.log(averageTemp)
+                    table = document.getElementById('summaryTable')
+                    row = ` <tr>
+                                <td>${tableData.length}</td>
+                                <td>${averageTemp}</td>
+                            </tr>`
+                    table.innerHTML += row
                 }
 
             })
 
-                    //Retrieved from https://stackoverflow.com/questions/18395976/how-to-display-a-json-array-in-table-format
-                    //Appears to use JQuery.
-                    //var tbl = document.getElementById("<table/>").attr("date", "table1");
-                    //    $("#div2").append(tbl);
-                    //    for (var i = 0; i < data.length; i++) {
-                    //        var tr = "<tr>";
-                    //        var td1 = "<td>" + obj[i]["temperatureC"] + "</td>";
-                    //        var td2 = "<td>" + obj[i]["temperatureF"] + "</td>";
-                    //        var td3 = "<td>" + obj[i]["Summary"] + "</td></tr>";
-
-                    //        document.getElementById("#table1").append(tr + td1 + td2 + td3);
-                    //    }
-
-
-
-
+                  
 
     </script>
 
